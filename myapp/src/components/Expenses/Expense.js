@@ -1,30 +1,27 @@
-import ExpItem from "./ExpItem";
-import './Expense.css'
-import Card from '../UI/Card'
-const Expense  = (props) => {
+import React, { useState } from "react";
+import "./Expense.css";
+import Card from "../UI/Card";
+import ExpFilter from "./ExpFilter";
+import ExpList from "./ExpList";
+
+const Expense = (props) => {
+  const [enteredFilter, setFilter] = useState("2020");
+
+  const filterYear = (selectedYear) => {
+    setFilter(selectedYear);
+  };
+
+  const filteredArray = props.Item.filter((expense) => {
+    return expense.date.getFullYear().toString() === enteredFilter;
+  });
+
   return (
-    <Card className="expense">
-      <ExpItem
-        title={props.Item[0].title}
-        amount={props.Item[0].amount}
-        date={props.Item[0].date}
-      ></ExpItem>
-      <ExpItem
-        title={props.Item[1].title}
-        amount={props.Item[1].amount}
-        date={props.Item[1].date}
-      ></ExpItem>
-      <ExpItem
-        title={props.Item[2].title}
-        amount={props.Item[2].amount}
-        date={props.Item[2].date}
-      ></ExpItem>
-      <ExpItem
-        title={props.Item[3].title}
-        amount={props.Item[3].amount}
-        date={props.Item[3].date}
-      ></ExpItem>
-    </Card>
+    <div>
+      <Card className="expense">
+        <ExpFilter selected={enteredFilter} onFilterApply={filterYear} />
+        <ExpList items = {filteredArray} />
+      </Card>
+    </div>
   );
-}
+};
 export default Expense;
