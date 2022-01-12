@@ -35,7 +35,7 @@ textarea {
   width: 49rem;
   max-width: 100%;
 }
-.form-control button {
+button {
   background-color: #410101; /* Green */
   border: none;
   margin-top: 5px;
@@ -45,4 +45,16 @@ textarea {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+.form-control.invalid input {
+  border-color: red;
+  background-color: rgb(240, 173, 173);
+}
+.form-control.invalid label {
+  color: red;
+}
+.form-control.invalid textarea {
+  border-color: red;
+  background-color: rgb(233, 171, 171);
+
 }

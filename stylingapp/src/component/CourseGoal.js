@@ -41,24 +41,18 @@ const CourseGoal = (props) => {
       </header>
       <div className="container">
         <form onSubmit={submitHandler}>
-          <div className="form-control">
-            <label style={{ color: !isValid ? "red" : "white" }}>
-              Goal Title
-            </label>
+          <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+            <label>Goal Title</label>
             <input
-              style={{ borderColor: !isValid ? "red" : "white" }}
               type="text"
               id="addGoal"
               value={enteredTitle}
               onChange={titleListner}
             />
           </div>
-          <div className="form-control">
-            <label style={{ color: !isValid ? "red" : "white" }}>
-              Goal Description
-            </label>
+          <div className={`form-control ${!isValid ? "invalid" : ""}`}>
+            <label>Goal Description</label>
             <textarea
-              style={{ borderColor: !isValid ? "red" : "white" }}
               type="text"
               id="goalDesc"
               rows="3"
@@ -66,9 +60,7 @@ const CourseGoal = (props) => {
               onChange={descListner}
             />
           </div>
-          <div className="form-control">
-            <button type="submit">Add Goal</button>
-          </div>
+          <button type="submit">Add Goal</button>
         </form>
       </div>
     </div>
