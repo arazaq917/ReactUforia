@@ -1,0 +1,20 @@
+.canvas {
+  box-sizing: border-box;
+  float: left;
+  padding: 10px;
+  width: 55%;
+  display: table;
+  background-color: rgb(214, 212, 212);
+  height: 100vh;
+}
+.draggable {
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  touch-action:none;
+  user-select: none;
+}
