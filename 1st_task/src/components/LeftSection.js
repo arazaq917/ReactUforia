@@ -1,34 +1,21 @@
 import React from "react";
 import "./LeftSection.css";
-import interact from "interactjs";
+import { useDispatch} from "react-redux";
+import { ItemAction } from "../store/addItem";
 
-const LeftSection = () => {
-  var angle = 0;
+const LeftSection = (props) => {
+  const dispatch = useDispatch();
 
-  interact("#rotate-area").gesturable({
-    onmove: function (event) {
-      var arrow = document.getElementById("arrow");
+  const addItem = () => {
+    dispatch(ItemAction.addItem("Add text"));
+    dispatch(ItemAction.movable(".target"));
 
-      angle += event.da;
-
-      arrow.style.transform = "rotate(" + angle + "deg)";
-
-      document.getElementById("angle-info").textContent =
-        angle.toFixed(2) + "\u00b0";
-    },
-  });
+  };
   return (
     <div className="left">
       <h2>Left Section</h2>
-      <div id="rotate-area">
-        <div id="angle-info">0&deg;</div>
-        <svg id="arrow" viewbox="0 0 100 100">
-          <polygon
-            points="50,0 75,25 62.5,25 62.5,100 37.5,100 37.5,25 25,25"
-            fill="#29e"
-          ></polygon>
-        </svg>
-      </div>
+      <button className="btn" onClick={addItem}>Add Text</button>
+      <button className="btn2" onClick={addItem}>Add Large Text</button>
     </div>
   );
 };
